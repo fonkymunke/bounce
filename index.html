@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Meine Wunschliste</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <script>
+  const emojis = ["🌸", "✨", "🌺", "⭐"];
+  setInterval(() => {
+    const star = document.createElement("div");
+    star.className = "star";
+    star.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    star.style.left = Math.random() * 100 + "vw";
+    star.style.top = "-30px";
+    star.style.fontSize = Math.random() * 24 + 12 + "px";
+    document.getElementById("shooting-stars").appendChild(star);
+    setTimeout(() => star.remove(), 3000);
+  }, 400);
+</script>
+
+  <style>
+    body {
+      cursor: url('bild/cursor.png'), auto;
+    }
+
+    .card a {
+      cursor: url('bild/pointer.png'), pointer;
+    }
+  </style>
+
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to bottom, #fce4ec, #ffffff);
+      color: #333;
+    }
+
+    @font-face {
+      font-family: 'Star';
+      src: url('bild/star.ttf') format('truetype');
+    }
+
+    header {
+      position: relative;
+      text-align: center;
+      padding: 2rem;
+      background-color: #f8bbd0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 3rem;
+      color: white;
+      font-family: 'Star';
+      text-shadow:
+        -1px -1px 0 black,
+         1px -1px 0 black,
+        -1px  1px 0 black,
+         1px  1px 0 black;
+    }
+
+    .corner {
+      position: absolute;
+      top: 10px;
+      width: 120px;
+      height: auto;
+      z-index: 1;
+    }
+
+    .corner.left {
+      left: 10px;
+    }
+
+    .corner.right {
+      right: 10px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+      transition: transform 0.2s;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+    }
+
+    .card img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+    }
+
+    .card a {
+      text-decoration: none;
+      color: #d81b60;
+      font-weight: bold;
+      padding: 1rem;
+      flex-grow: 1;
+    }
+
+    @keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  }
+
+
+.card {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Verzögerung für gestaffelte Animation */
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+.card:nth-child(4) { animation-delay: 0.4s; }
+.card:nth-child(5) { animation-delay: 0.5s; }
+.card:nth-child(6) { animation-delay: 0.6s; }
+.card:nth-child(7) { animation-delay: 0.7s; }
+.card:nth-child(8) { animation-delay: 0.8s; }
+.card:nth-child(9) { animation-delay: 0.9s; }
+.card:nth-child(10) { animation-delay: 1.0s; }
+.card:nth-child(11) { animation-delay: 1.1s; }
+.card:nth-child(12) { animation-delay: 1.2s; }
+.card:nth-child(13) { animation-delay: 1.3s; }
+
+#shooting-stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  font-size: 1.5rem;
+  animation: fall 2.5s linear forwards;
+  color: white;
+  text-shadow: 0 0 6px #fff, 0 0 12px #f0f;
+  user-select: none;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(-200px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+
+  </style>
+</head>
+<body>
+  <body class="fade-in">
+
+  <header>
+    <img src="bild/left.gif" class="corner left" alt="GIF links">
+    <h1>Meine Wunschliste 💖</h1>
+    <img src="bild/right.gif" class="corner right" alt="GIF rechts">
+
+    <!-- Musik-Icon-Button -->
+<button onclick="document.getElementById('musik').play()" style="
+  position: absolute;
+  top: 20px;
+  right: 150px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+">
+  <img src="bild/musikicon.png" alt="Musik abspielen" style="
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 50%;
+  " onmouseover="this.style.transform='scale(1.2)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.2)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
+</button>
+
+  </header>
+
+  <audio id="musik" loop>
+  <source src="bild/musik.mp3" type="audio/mpeg">
+  </audio>
+
+  <div id="shooting-stars"></div>
+
+  <div class="grid">
+    <div class="card">
+      <img src="bild/mask.webp" alt="Shiseido Hair Mask">
+      <a href="https://www.yesstyle.com/de/shiseido-fino-premium-touch-hair-mask-haarmaske/info.html/pid.1126837080" target="_blank">Shiseido Hair Mask</a>
+    </div>
+
+    <div class="card">
+      <img src="bild/aqua.webp" alt="Aqua Sun Screen">
+      <a href="https://www.yesstyle.com/de/rohto-mentholatum-skin-aqua-tone-up-uv-essence-lsf-50-pa-sonnenessenz/info.html/pid.1077952143" target="_blank">Aqua Sun Screen Lavender</a>
+    </div>
+
+    <div class="card">
+      <img src="bild/mochi.webp" alt="Arencia Mochi Cleanser">
+      <a href="https://www.yesstyle.com/de/arencia-fresh-green-rice-mochi-cleanser-gesichtsreiniger-120g/info.html/pid.1133101178" target="_blank">Mochi Cleanser</a>
+    </div>
+
+    <div class="card">
+      <img src="https://img.kwcdn.com/product/fancy/87e19d80-23bb-4ccf-9f1d-32c6d1d007e8.jpg" alt="Bügelperlen">
+      <a href="https://www.temu.com/de/48-farben-2-6mm-26000-stuck-mini-sicherungsperlen-set-3d--bugeln-perlen-handgemachte-bastelarbeiten-dekorieren-puzzle-hochwertige-schmelzperlen-g-601099644508621.html" target="_blank">Bügelperlen</a>
+    </div>
+
+    <div class="card">
+      <img src="bild/genki.webp" alt="Genki Buch">
+      <a href="https://www.kleinanzeigen.de/s-anzeige/genki-1-elementary-japanese-buch/3112349744-77-1972" target="_blank">Genki 1 Buch</a>
+    </div>
+
+    <div class="card">
+      <img src="bild/fonti.jpg" alt="Fontanella Cake">
+      <a href="http://www.fontanellametten.de" target="_blank">Fontanella Cake</a>
+    </div>
+
+    <div class="card">
+      <img src="bild/darling1.jpg" alt="Dress Up Darling Figur im Cosplay">
+      <a href="https://de.aliexpress.com/item/1005008419466915.html" target="_blank">Dress Up Darling Figur im Cosplay</a>
+    </div>
+
+    <div class="card">
+      <img src="bild/darling2.jpg" alt="Dress Up Darling Figur A">
+      <a href="https://de.aliexpress.com/item/1005005687548268.html" target="_blank">Dress Up Darling Figur A</a>
+    </div>
+
+    <div class="card">
+      <img src="bild/darling3.webp" alt="Dress Up Darling Figur B">
+      <a href="de.aliexpress.com/item/1005008413920693.html" target="_blank">Dress Up Darling Figur B</a>
+    </div>
+
+     <div class="card">
+      <img src="bild/darling4.webp" alt="Dress Up Darling Nendo">
+      <a href="de.aliexpress.com/item/1005006804663459.html" target="_blank">Dress Up Darling Nendo</a>
+    </div>
+
+    <div class="card">
+      <img src="bild/miku.jpg" alt="Cinnamoroll Miku">
+      <a href="de.aliexpress.com/item/1005008047050260.html" target="_blank">Cinnamoroll Miku</a>
+    </div>
+  </div>
+</body>
+</html>
