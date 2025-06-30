@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+  
   <meta charset="UTF-8">
   <title>Meine Wunschliste</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
@@ -89,15 +90,47 @@
     }
 
     .card {
-      background: #fff;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
-      transition: transform 0.2s;
-      display: flex;
-      flex-direction: column;
-      text-align: center;
-    }
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.card:hover img {
+  transform: scale(1.05) rotate(1deg);
+}
+.card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.card:hover {
+  transform: scale(1.05); /* leicht vergrößert */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* stärkerer Schatten */
+  z-index: 10;
+}
+
+.card:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
 
     .card:hover {
       transform: scale(1.03);
@@ -133,6 +166,25 @@
   opacity: 0;
   animation: fadeInUp 0.8s ease forwards;
 }
+
+.badge {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background-color: #fff0f5;
+  color: #d81b60;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 2;
+}
+
+.card {
+  position: relative; /* Wichtig, damit .badge positioniert wird */
+}
+
 
 /* Verzögerung für gestaffelte Animation */
 .card:nth-child(1) { animation-delay: 0.1s; }
@@ -181,6 +233,22 @@
 }
 
 
+.countdown-box {
+  position: static;
+  margin-top: 1rem;
+  display: inline-block;
+  background: #fff0f6;
+  color: #d81b60;
+  font-weight: bold;
+  padding: 10px 14px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+
+
   </style>
 </head>
 <body>
@@ -189,6 +257,11 @@
   <header>
     <img src="left.gif" class="corner left" alt="GIF links">
     <h1>Meine Wunschliste 💖</h1>
+    <p class="countdown-box">
+  📅 Noch <span id="daysToAnniversary">…</span> Tage bis zum Anniversary 💕<br>
+  🎂 Noch <span id="daysToBirthday">…</span> Tage bis zum Geburtstag!
+</p>
+
     <img src="right.gif" class="corner right" alt="GIF rechts">
 
     <!-- Musik-Icon-Button -->
@@ -215,63 +288,89 @@
   <source src="musik.mp3" type="audio/mpeg">
   </audio>
 
+
   <div id="shooting-stars"></div>
 
   <div class="grid">
     <div class="card">
+      <span class="badge">💖💖💖💖</span>
       <img src="mask.webp" alt="Shiseido Hair Mask">
       <a href="https://www.yesstyle.com/de/shiseido-fino-premium-touch-hair-mask-haarmaske/info.html/pid.1126837080" target="_blank">Shiseido Hair Mask</a>
     </div>
 
     <div class="card">
+      <span class="badge">💖💖💖💖</span>
       <img src="aqua.webp" alt="Aqua Sun Screen">
       <a href="https://www.yesstyle.com/de/rohto-mentholatum-skin-aqua-tone-up-uv-essence-lsf-50-pa-sonnenessenz/info.html/pid.1077952143" target="_blank">Aqua Sun Screen Lavender</a>
     </div>
 
     <div class="card">
+      <span class="badge">💖💖</span>
       <img src="mochi.webp" alt="Arencia Mochi Cleanser">
       <a href="https://www.yesstyle.com/de/arencia-fresh-green-rice-mochi-cleanser-gesichtsreiniger-120g/info.html/pid.1133101178" target="_blank">Mochi Cleanser</a>
     </div>
 
     <div class="card">
+      <span class="badge">💖💖💖💖💖</span>
       <img src="https://img.kwcdn.com/product/fancy/87e19d80-23bb-4ccf-9f1d-32c6d1d007e8.jpg" alt="Bügelperlen">
       <a href="https://www.temu.com/de/48-farben-2-6mm-26000-stuck-mini-sicherungsperlen-set-3d--bugeln-perlen-handgemachte-bastelarbeiten-dekorieren-puzzle-hochwertige-schmelzperlen-g-601099644508621.html" target="_blank">Bügelperlen</a>
     </div>
 
     <div class="card">
+      <span class="badge">💖💖💖💖💖</span>
       <img src="genki.webp" alt="Genki Buch">
       <a href="https://www.kleinanzeigen.de/s-anzeige/genki-1-elementary-japanese-buch/3112349744-77-1972" target="_blank">Genki 1 Buch</a>
     </div>
 
-    <div class="card">
+    <div class="card"><span class="badge">💖💖💖</span>
       <img src="fonti.jpg" alt="Fontanella Cake">
       <a href="http://www.fontanellametten.de" target="_blank">Fontanella Cake</a>
     </div>
 
     <div class="card">
+      <span class="badge">💖💖💖💖</span>
       <img src="darling1.jpg" alt="Dress Up Darling Figur im Cosplay">
       <a href="https://de.aliexpress.com/item/1005008419466915.html" target="_blank">Dress Up Darling Figur im Cosplay</a>
     </div>
 
     <div class="card">
+      <span class="badge">💖</span>
       <img src="darling2.jpg" alt="Dress Up Darling Figur A">
       <a href="https://de.aliexpress.com/item/1005005687548268.html" target="_blank">Dress Up Darling Figur A</a>
     </div>
 
     <div class="card">
+      <span class="badge">💖</span>
       <img src="darling3.webp" alt="Dress Up Darling Figur B">
       <a href="de.aliexpress.com/item/1005008413920693.html" target="_blank">Dress Up Darling Figur B</a>
     </div>
 
      <div class="card">
+      <span class="badge">💖💖💖</span>
       <img src="darling4.webp" alt="Dress Up Darling Nendo">
       <a href="de.aliexpress.com/item/1005006804663459.html" target="_blank">Dress Up Darling Nendo</a>
     </div>
 
     <div class="card">
+      <span class="badge">💖💖💖</span>
       <img src="miku.jpg" alt="Cinnamoroll Miku">
       <a href="de.aliexpress.com/item/1005008047050260.html" target="_blank">Cinnamoroll Miku</a>
     </div>
   </div>
+
+<script>
+function daysUntil(dateString) {
+  const today = new Date();
+  const [month, day] = dateString.split('-').map(Number);
+  let target = new Date(today.getFullYear(), month - 1, day);
+  if (target < today) target.setFullYear(today.getFullYear() + 1);
+  const diff = target - today;
+  return Math.ceil(diff / (1000 * 60 * 60 * 24));
+}
+
+document.getElementById('daysToAnniversary').textContent = daysUntil('07-07');
+document.getElementById('daysToBirthday').textContent = daysUntil('08-30');
+</script>
+
 </body>
 </html>
